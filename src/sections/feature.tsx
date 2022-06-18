@@ -1,13 +1,25 @@
 
-import { jsx } from 'theme-ui';
+/** @jsxImportSource theme-ui */
+
 import { Container, Grid } from 'theme-ui';
 import { SectionHeader, FeatureCard } from 'components';
-import Performance from '../assets/feature/performance.svg';
-import Partnership from '../assets/feature/partnership.svg';
-import Subscription from '../assets/feature/subscription.svg';
-import Support from '../assets/feature/support.svg';
 
-const data = [
+
+const Performance = '../assets/feature/performance.svg';
+const Partnership = '../assets/feature/partnership.svg';
+const Subscription = '../assets/feature/subscription.svg';
+const Support = '../assets/feature/support.svg';
+
+
+type Data = {
+  id: number
+  imgSrc: string
+  altText: string
+  title: string
+  text: string
+}
+
+const data: Data[] = [
   {
     id: 1,
     imgSrc: Performance,
@@ -44,7 +56,26 @@ const data = [
 
 export default function Feature () {
   return (
-    <h1>Feature</h1>
+    <section sx={{ variant: 'section.feature' }}>
+      <Container>
+        <SectionHeader
+          title='Quality Features'
+          slogan='Amazing useful features'
+        />
+
+        <Grid sx={styles.grid}>
+          {data.map(({ id, imgSrc, altText, title, text }) => (
+            <FeatureCard
+              key={id}
+              src={imgSrc}
+              title={title}
+              text={text}
+              altText={altText}
+            />
+          ))}
+        </Grid>
+      </Container>
+    </section>
   );
 }
 
