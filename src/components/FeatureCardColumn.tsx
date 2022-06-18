@@ -25,7 +25,7 @@ export default function FeatureCardColumn ({
   );
 }
 
-const styles = {
+const styles: any = {
   card: {
     display: 'flex',
     alignItems: ['center', 'flex-start'],

@@ -3,9 +3,9 @@ import { Box, Heading, Text, Button, Link } from 'theme-ui';
 interface Props {
   subTitle: string,
   title: string,
-  description: string,
-  btnName: string,
-  btnURL: string
+  description?: string,
+  btnName?: string,
+  btnURL?: string
 }
 
 export default function TextFeature ({
@@ -16,11 +16,33 @@ export default function TextFeature ({
   btnURL = '#',
 }: Props) {
   return (
-    <h1>TextFeature</h1>
+    <Box sx={styles.card}>
+      <Box sx={styles.wrapper}>
+        <Text as='p' sx={styles.wrapper.subTitle}>
+          {subTitle}
+        </Text>
+        <Heading as='h2' sx={styles.wrapper.title}>
+          {title}
+        </Heading>
+      </Box>
+
+      {description && (
+        <Text as='p' className='description'>
+          {description}
+        </Text>
+      )}
+      {btnName && (
+        <Link href={btnURL} variant='default'>
+          <Button variant='primary' aria-label={btnName}>
+            {btnName}
+          </Button>
+        </Link>
+      )}
+    </Box>
   );
 }
 
-const styles = {
+const styles: any = {
   card: {
     display: 'flex',
     alignItems: 'flex-start',

@@ -1,24 +1,40 @@
-import React, { useState } from 'react';
 /** @jsxImportSource theme-ui */
+
+import React, { useState } from 'react';
 import { Container, Box, Grid, Text, Heading, Button, Image } from 'theme-ui';
 import { keyframes } from '@emotion/react';
-import { TextFeature } from 'components';
-// import ModalVideo from 'react-modal-video';
 import { IoIosPlay } from 'react-icons/io';
 
+import { TextFeature } from 'components';
+
 import ServiceThumb from '/public/assets/service-thumb.png';
-import shapePattern from '/public/assets/shape-pattern1.png';
+import ShapePattern from '/public/assets/shape-pattern1.png';
 
-import Smart from '../assets/services/smart.svg';
-import Secure from '../assets/services/secure.svg';
+const SmartIcon = '../assets/services/smart.svg';
+const SecureIcon = '../assets/services/secure.svg';
 
-const data = {
+
+type Features = {
+  id: number
+  imgSrc: string
+  altText: string
+  title: string
+  text: string
+}
+
+type Data = {
+  subTitle: string
+  title: string
+  features: Features[]
+}
+
+const data: Data = {
   subTitle: 'our services',
   title: 'Business Goals Achieved with Design',
   features: [
     {
       id: 1,
-      imgSrc: Smart,
+      imgSrc: SmartIcon,
       altText: 'Smart Features',
       title: 'Smart Features',
       text:
@@ -26,7 +42,7 @@ const data = {
     },
     {
       id: 2,
-      imgSrc: Secure,
+      imgSrc: SecureIcon,
       altText: 'Secure Contents',
       title: 'Secure Contents',
       text:
@@ -36,8 +52,55 @@ const data = {
 };
 
 export default function ServiceSection () {
+  const [videoOpen, setVideoOpen] = React.useState<boolean>(false)
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault()
+    setVideoOpen(true)
+  }
+
   return (
-    <h1>Service Section</h1>
+    <section sx={{ variant: 'section.services' }}>
+      <Container sx={styles.containerBox}>
+        <Box sx={styles.thumbnail}>
+          <Image src={ServiceThumb.src} alt='Thumbnail' />
+          <Button
+            sx={styles.videoBtn}
+            onClick={handleClick}
+            aria-label='Play Button'
+          >
+            <span>
+              <IoIosPlay />
+            </span>
+          </Button>
+          <Box sx={styles.shapeBox}>
+            <Image src={ShapePattern.src} alt='rounded and colored shapes ' />
+          </Box>
+        </Box>
+        <Box sx={styles.contentBox}>
+          <TextFeature subTitle={data.subTitle} title={data.title} />
+
+          <Grid sx={styles.grid}>
+            {data.features.map(({ id, imgSrc, altText, title, text }) => (
+              <Box key={id} sx={styles.card}>
+                <Image src={imgSrc} alt={altText} sx={styles.icon} />
+                <Box key={`wrapper-${id}`} sx={styles.wrapper}>
+                  <Heading sx={styles.wrapper.title}>{title}</Heading>
+                  <Text sx={styles.wrapper.subTitle}>{text}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Grid>
+        </Box>
+      </Container>
+
+      {/* <ModalVideo
+        channel='youtube'
+        isOpen={videoOpen}
+        videoId='oxFr7we3LC8'
+        onClose={() => setVideoOpen(false)}
+      /> */}
+    </section>
   );
 }
 
@@ -53,7 +116,7 @@ const playPluse = keyframes`
   }
 `;
 
-const styles = {
+const styles: any = {
   coreFeature: {
     py: [0, null, null, 2, null, 7],
     position: 'relative',
