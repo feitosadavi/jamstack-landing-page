@@ -1,12 +1,22 @@
 
 import { Container, Grid } from 'theme-ui';
-import { SectionHeader, FeatureCardColumn } from 'components';
-import Performance from '../assets/key-feature/performance.svg';
-import Partnership from '../assets/key-feature/partnership.svg';
-import Subscription from '../assets/key-feature/subscription.svg';
-import Support from '../assets/key-feature/support.svg';
+import { SectionHeader, FeatureCardColumn, FeatureCard } from 'components';
 
-const data = [
+
+const Performance = '../assets/key-feature/performance.svg';
+const Partnership = '../assets/key-feature/partnership.svg';
+const Subscription = '../assets/key-feature/subscription.svg';
+const Support = '../assets/key-feature/support.svg';
+
+type Data = {
+  id: number
+  imgSrc: string
+  altText: string
+  title: string
+  text: string
+}
+
+const data: Data[] = [
   {
     id: 1,
     imgSrc: Performance,
@@ -43,7 +53,25 @@ const data = [
 
 export default function KeyFeature () {
   return (
-    <h1>Key Feature</h1>
+    <section id='feature' sx={{ variant: 'section.keyFeature' }}>
+      <Container>
+        <SectionHeader
+          slogan='Whats the function'
+          title='Meet the future of our product'
+        />
+        <Grid sx={styles.grid}>
+          {data.map(({ id, imgSrc, altText, title, text }) => (
+            <FeatureCardColumn
+              key={id}
+              src={imgSrc}
+              title={title}
+              text={text}
+              altText={altText}
+            />
+          ))}
+        </Grid>
+      </Container>
+    </section>
   );
 }
 

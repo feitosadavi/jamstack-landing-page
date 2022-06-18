@@ -1,6 +1,11 @@
 const THEME: any = {
   // example colors with dark mode
+  config: {
+    initialColorModeName: 'light',
+  },
   colors: {
+
+    // highlight	a background color for highlighting text
     text: '#343D48', // body color and primary color
     text_secondary: '#02073E', // secondary body color
     heading: '#0F2137', // primary heading color
@@ -13,16 +18,14 @@ const THEME: any = {
     secondary: '#2563FF', // secondary color - can be used for hover states
     muted: '#E4E4E4', // muted color
     accent: '#609', // a contrast color for emphasizing UI
-
-    // highlight	a background color for highlighting text
     modes: {
-      dark: {
-        text: '#000',
-        background: '#fff',
-        primary: '#0cf',
-        secondary: '#09c',
-        muted: '#111',
-      },
+      // dark: {
+      //   text: '#000',
+      //   background: '#fff',
+      //   primary: '#0cf',
+      //   secondary: '#09c',
+      //   muted: '#111',
+      // },
     },
   },
   breakpoints: [
