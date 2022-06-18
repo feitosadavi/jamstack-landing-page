@@ -1,4 +1,5 @@
 
+/** @jsxImportSource theme-ui */
 import { Container, Box, Heading, Text, Image, Button } from 'theme-ui';
 import BannerImg from '/public/assets/banner-thumb.png';
 import ShapeLeft from '/public/assets/shape-left.png';
@@ -6,11 +7,28 @@ import ShapeRight from '/public/assets/shape-right.png';
 
 export default function Banner () {
   return (
-    <h1>Banner</h1>
+    <section sx={styles.banner} id='home'>
+      <Container sx={styles.banner.container}>
+        <Box sx={styles.banner.contentBox}>
+          <Heading as='h1' variant='heroPrimary'>
+            Top Quality Digital Products to Explore
+          </Heading>
+          <Text as='p' variant='heroSecondary'>
+            Check out our website to find great software products and deals!
+            If you need a website or a web application this is the place to go!
+          </Text>
+          <Button variant='primary'>Explore</Button>
+        </Box>
+
+        <Box sx={styles.banner.imageBox}>
+          <Image src={BannerImg.src} alt='banner image' />
+        </Box>
+      </Container>
+    </section>
   );
 }
 
-const styles = {
+const styles: any = {
   banner: {
     pt: ['140px', '145px', '155px', '170px', null, null, '180px', '215px'],
     pb: [2, null, 0, null, 2, 0, null, 5],
@@ -24,7 +42,7 @@ const styles = {
       height: '100%',
       width: '100%',
       zIndex: -1,
-      backgroundImage: `url(${ShapeLeft})`,
+      backgroundImage: `url(${ShapeLeft.src})`,
       backgroundRepeat: `no-repeat`,
       backgroundPosition: 'bottom left',
       backgroundSize: '36%',
@@ -37,7 +55,7 @@ const styles = {
       height: '100%',
       width: '100%',
       zIndex: -1,
-      backgroundImage: `url(${ShapeRight})`,
+      backgroundImage: `url(${ShapeRight.src})`,
       backgroundRepeat: `no-repeat`,
       backgroundPosition: 'bottom right',
       backgroundSize: '32%',
