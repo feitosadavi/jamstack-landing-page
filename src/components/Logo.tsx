@@ -3,12 +3,25 @@ import { Image } from 'theme-ui';
 import { Link } from 'components';
 
 interface Props {
-  src: string
-  (...rest: any): any
+  src: any,
+  [props: string]: any
 }
 
 export default function Logo ({ src, ...rest }: Props) {
   return (
-    <h1>Logo</h1>
+    <Link
+      label=''
+      path='/'
+      sx={{
+        variant: 'links.logo',
+        display: 'flex',
+        cursor: 'pointer',
+        mr: 15
+      }}
+      {...rest}
+    >
+      <Image src={src} alt='' />
+      {/* <Image src={src} alt='jamstack landing page logo' /> */}
+    </Link>
   );
 }

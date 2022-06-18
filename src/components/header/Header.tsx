@@ -2,9 +2,9 @@
 import { keyframes } from '@emotion/react';
 import { Link } from 'react-scroll';
 import { Logo } from 'components';
-import LogoDark from 'assets/logo.svg';
 import MobileDrawer from './MobileDrawer';
 import menuItems from './header.data';
+import { Button, Container, Flex } from 'theme-ui';
 
 interface Props {
   className: string
@@ -12,7 +12,30 @@ interface Props {
 
 export default function Header ({ className }: Props) {
   return (
-    <h1>Header</h1>
+    <header sx={styles.header} className={className} id='header'>
+      <Container sx={styles.container}>
+        <Logo src={'/logo.svg'} />
+        <Flex as='nav' sx={styles.nav}>
+          {menuItems.map(({ path, label }, i) => (
+            <Link
+              key={i}
+              activeClass='active'
+              to={path}
+              offset={-70}
+              duration={500}
+              spy
+              smooth
+            >
+              {label}
+            </Link>
+          ))}
+        </Flex>
+        <Button className='donate__btn' variant='secondary' aria-label='Get Started'>
+          Get Started
+        </Button>
+        <MobileDrawer />
+      </Container>
+    </header>
   );
 }
 
@@ -29,7 +52,7 @@ const positionAnim = keyframes`
   }
 `;
 
-const styles = {
+const styles: any = {
   header: {
     color: 'text',
     fontWeight: 'body',

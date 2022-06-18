@@ -1,10 +1,11 @@
-import { NavLink as MenuLink, Link as A } from 'theme-ui';
+import { NavLink as MenuLink, Link as A, LinkProps } from 'theme-ui';
+import ForwardRef from '@theme-ui/components/dist/declarations/src/Link';
 import NextLink from 'next/link';
 
-interface Props {
+interface Props extends LinkProps {
   path: string
-  label: string
-  children: any
+  label?: string
+  children?: any
   (...rest: any): any
 }
 
@@ -16,6 +17,8 @@ export function NavLink ({ path, label, children, ...rest }: Props) {
 
 export function Link ({ path, label, children, ...rest }: Props) {
   return (
-    <h1>Link</h1>
+    <A {...rest} href={path}>
+      {children || label}
+    </A>
   );
 }

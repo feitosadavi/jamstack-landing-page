@@ -1,4 +1,9 @@
-const HEADER_DATA = [
+type Data = {
+  path: string
+  label: string
+}
+
+const HEADER_DATA: Data[] = [
   {
     path: 'home',
     label: 'Home',

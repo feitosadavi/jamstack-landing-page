@@ -17,8 +17,8 @@ const THEME: any = {
     // highlight	a background color for highlighting text
     modes: {
       dark: {
-        text: '#fff',
-        background: '#000',
+        text: '#000',
+        background: '#fff',
         primary: '#0cf',
         secondary: '#09c',
         muted: '#111',

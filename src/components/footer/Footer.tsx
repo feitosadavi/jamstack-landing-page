@@ -2,7 +2,7 @@
 import { Box, Container, Image, Text } from 'theme-ui';
 import { Link } from 'components';
 import data from './footer.data';
-import FooterLogo from 'assets/logo.svg';
+import FooterLogo from '../assets/logo.svg';
 
 export default function Footer () {
   return (

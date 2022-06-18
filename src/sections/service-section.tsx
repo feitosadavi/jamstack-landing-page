@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { Container, Box, Grid, Text, Heading, Button, Image } from 'theme-ui';
 import { keyframes } from '@emotion/react';
 import { TextFeature } from 'components';
-import ModalVideo from 'react-modal-video';
+// import ModalVideo from 'react-modal-video';
 import { IoIosPlay } from 'react-icons/io';
 
-import ServiceThumb from 'assets/service-thumb.png';
-import shapePattern from 'assets/shape-pattern1.png';
+import ServiceThumb from '/public/assets/service-thumb.png';
+import shapePattern from '/public/assets/shape-pattern1.png';
 
-import Smart from 'assets/services/smart.svg';
-import Secure from 'assets/services/secure.svg';
+import Smart from '../assets/services/smart.svg';
+import Secure from '../assets/services/secure.svg';
 
 const data = {
   subTitle: 'our services',

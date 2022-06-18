@@ -2,10 +2,10 @@
 import { jsx } from 'theme-ui';
 import { Container, Grid } from 'theme-ui';
 import { SectionHeader, FeatureCard } from 'components';
-import Performance from 'assets/feature/performance.svg';
-import Partnership from 'assets/feature/partnership.svg';
-import Subscription from 'assets/feature/subscription.svg';
-import Support from 'assets/feature/support.svg';
+import Performance from '../assets/feature/performance.svg';
+import Partnership from '../assets/feature/partnership.svg';
+import Subscription from '../assets/feature/subscription.svg';
+import Support from '../assets/feature/support.svg';
 
 const data = [
   {
