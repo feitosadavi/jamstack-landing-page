@@ -6,7 +6,36 @@ import Carousel from 'react-multi-carousel';
 import { PriceCard, ButtonGroup, SectionHeader } from 'components';
 import { IoIosCheckmarkCircle, IoIosCloseCircle } from 'react-icons/io';
 
-const packages = {
+type Point = {
+  id: number
+  icon: any
+  text: string
+  isAvailable: boolean
+}
+
+type Period = {
+  id: number,
+  name: string,
+  description: string,
+  buttonText: string,
+  priceWithUnit: string,
+  points: Point[]
+  anotherOption?: string,
+  header?: string,
+  headerIcon?: any,
+}
+
+type Package = {
+  monthly: Period[]
+  annual: Period[]
+}
+
+type BtnState = {
+  active: 'monthly' | 'annual'
+  princingPlan: Period[]
+}
+
+const packages: Package = {
   monthly: [
     {
       id: 1,
@@ -239,6 +268,24 @@ const responsive = {
 
 export default function Package () {
   const { monthly, annual } = packages;
+  const [state, setState] = React.useState<BtnState>({
+    active: 'monthly',
+    princingPlan: monthly
+  })
+
+  const handlePrincingPlan = (plan: 'monthly' | 'annual') => {
+    if (plan === 'monthly') {
+      setState({
+        active: 'monthly',
+        princingPlan: monthly
+      })
+    } else {
+      setState({
+        active: 'annual',
+        princingPlan: annual
+      })
+    }
+  }
 
   const sliderParams = {
     additionalTransfrom: 0,
@@ -264,7 +311,44 @@ export default function Package () {
   };
 
   return (
-    <h1>Package</h1>
+    <section id='princing' sx={{ variant: 'section.pricing' }}>
+      <Container>
+        <SectionHeader
+          slogan='Princing Plan'
+          title='Choose your pricing plan'
+        />
+        <Flex sx={styles.buttonGroup}>
+          <Box sx={styles.buttonGroupInner}>
+            <button
+              className={state.active === 'monthly' ? 'active' : ''}
+              type='button'
+              aria-label='Monthly'
+              onClick={() => handlePrincingPlan('monthly')}
+            >
+              Monthly Plan
+            </button>
+
+            <button
+              className={state.active === 'annual' ? 'active' : ''}
+              type='button'
+              aria-label='annual'
+              onClick={() => handlePrincingPlan('annual')}
+            >
+              Annual Plan
+            </button>
+          </Box>
+        </Flex>
+        <Box sx={styles.princingWrapper} className='pricing__wrapper'>
+          <Carousel {...sliderParams}>
+            {state.princingPlan.map(packageData => (
+              <Box key={packageData.id} sx={styles.pricingItem}>
+                <PriceCard data={packageData as any} />
+              </Box>
+            ))}
+          </Carousel>
+        </Box>
+      </Container>
+    </section>
   );
 }
 
@@ -286,7 +370,7 @@ const fadeIn2 = keyframes`
     opacity: 1;
   }
 `;
-const styles = {
+const styles: any = {
   pricingWrapper: {
     mb: '-40px',
     mt: '-40px',

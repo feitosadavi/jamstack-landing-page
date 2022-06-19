@@ -7,9 +7,9 @@ type Data = {
   name: string,
   description: string,
   priceWithUnit: string,
-  buttonText: string | 'Start Free Trial',
+  buttonText?: string,
   anotherOption: string,
-  points: string,
+  points: any[],
 }
 
 interface Props {
@@ -28,11 +28,42 @@ export default function PriceCard ({
   },
 }: Props) {
   return (
-    <h1>PriceCard</h1>
+    <Card
+      className={`package__card  ${header && 'active'}`}
+      sx={styles.pricingBox}
+    >
+      {header && <Text sx={styles.header}>{header}</Text>}
+      <Box>
+        <Box className='package__header' sx={styles.pricingHeader}>
+          <Heading className='package__name'>{name}</Heading>
+          <Text as='p'>{description}</Text>
+        </Box>
+        <List items={points} childStyle={styles.listItem} />
+        <Text className='package__price' sx={styles.price}>
+          {priceWithUnit}
+          <span>/Monthly</span>
+        </Text>
+        <Box sx={styles.buttonGroup}>
+          <Button variant='primary' aria-label={buttonText}>
+            {buttonText}
+          </Button>
+          {anotherOption && (
+            <Button
+              variant='textButton'
+              className='flex__trial'
+              aria-label={anotherOption}
+              sx={{ color: 'black' }}
+            >
+              {anotherOption}
+            </Button>
+          )}
+        </Box>
+      </Box>
+    </Card>
   );
 }
 
-const styles = {
+const styles: any = {
   pricingBox: {
     borderRadius: 20,
     position: 'relative',
