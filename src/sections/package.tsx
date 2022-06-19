@@ -311,7 +311,7 @@ export default function Package () {
   };
 
   return (
-    <section id='princing' sx={{ variant: 'section.pricing' }}>
+    <section id='pricing' sx={{ variant: 'section.pricing' }}>
       <Container>
         <SectionHeader
           slogan='Princing Plan'
