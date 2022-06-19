@@ -16,7 +16,7 @@ export default function SectionHeader ({ title, slogan, isWhite }: Props) {
         sx={{
           variant: 'sectionHeader.subTitle',
           color: isWhite ? 'white' : 'primary',
-          opacity: isWhite ? 0.1 : 0.7
+          opacity: isWhite ? 0.7 : 0.7
         }}
       >
         {slogan}

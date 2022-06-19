@@ -1,12 +1,19 @@
+/** @jsxImportSource theme-ui */
 
 import { Container, Grid, Box, Heading, Text } from 'theme-ui';
 import { SectionHeader } from 'components';
 
-import PatternBG from '../assets/patternBG.png';
-import ArrowOdd from '../assets/arrowOdd.svg';
-import ArrowEven from '../assets/arrowEven.svg';
+const PatternBG = '../assets/patternBG.png';
+const ArrowOdd = '../assets/arrowOdd.svg';
+const ArrowEven = '../assets/arrowEven.svg';
 
-const data = [
+type Data = {
+  id: number
+  title: string
+  text: string
+}
+
+const data: Data[] = [
   {
     id: 1,
     title: 'Set disbursement Instructions',
@@ -35,7 +42,26 @@ const data = [
 
 export default function WorkFlow () {
   return (
-    <h1>Workflow</h1>
+    <section sx={styles.workflow}>
+      <Container>
+        <SectionHeader
+          slogan='WHATS THE FUNCTION'
+          title='Meet the feature of our product'
+          isWhite={true}
+        />
+        <Grid sx={styles.grid}>
+          {data.map(({ id, title, text }) => (
+            <Box key={id} sx={styles.card}>
+              <Box sx={styles.iconBox}>{`0${id}`}</Box>
+              <Box sx={styles.wrapper}>
+                <Heading sx={styles.wrapper.title}>{title}</Heading>
+                <Text sx={styles.wrapper.subTitle}>{text}</Text>
+              </Box>
+            </Box>
+          ))}
+        </Grid>
+      </Container>
+    </section>
   );
 }
 
