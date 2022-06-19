@@ -35,7 +35,7 @@ export default function List ({ items = [], parentStyle, childStyle }: Props) {
   );
 }
 
-const styles = {
+const styles: any = {
   listIcon: {
     width: ['25px', '35px'],
     height: 'auto',

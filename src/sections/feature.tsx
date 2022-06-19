@@ -79,7 +79,7 @@ export default function Feature () {
   );
 }
 
-const styles = {
+const styles: any = {
   grid: {
     pt: [0, null, null, null, null, null, 2],
     px: [5, 6, 0, null, 7, 8, 7],

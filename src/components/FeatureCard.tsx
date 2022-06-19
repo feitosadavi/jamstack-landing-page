@@ -25,7 +25,7 @@ export default function FeatureCard ({
   );
 }
 
-const styles = {
+const styles: any = {
   card: {
     display: 'flex',
     alignItems: 'flex-start',

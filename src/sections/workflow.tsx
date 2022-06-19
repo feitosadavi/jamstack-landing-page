@@ -65,7 +65,7 @@ export default function WorkFlow () {
   );
 }
 
-const styles = {
+const styles: any = {
   workflow: {
     backgroundColor: 'primary',
     backgroundImage: `url(${PatternBG})`,

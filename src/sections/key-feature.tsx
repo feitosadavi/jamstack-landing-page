@@ -75,7 +75,7 @@ export default function KeyFeature () {
   );
 }
 
-const styles = {
+const styles: any = {
   grid: {
     width: ['100%', '80%', '100%'],
     mx: 'auto',
