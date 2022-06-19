@@ -9,10 +9,10 @@ interface Props {
 }
 
 export default function SEO ({
-  description = 'startup product landing page',
-  author = 'JSM',
+  description = 'a simple model landing page using nextjs',
+  author = 'Davi Feitosa',
   meta,
-  title = 'startup landing title',
+  title = 'NextJS landing page',
 }: Props) {
   const metaData = [
     {
@@ -52,6 +52,8 @@ export default function SEO ({
   return (
     <Head>
       <title>{title}</title>
+      <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-internet-32.png" />
+      <link type="image/png" sizes="96x96" rel="icon" href=".../icons8-internet-96.png" />
       {metaData.map(({ name, content }, i) => (
         <meta key={i} name={name} content={content} />
       ))}
