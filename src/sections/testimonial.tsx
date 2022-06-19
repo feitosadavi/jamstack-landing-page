@@ -8,13 +8,23 @@ import Avatar2 from '/public/assets/testimonial/avatar2.png';
 import Avatar3 from '/public/assets/testimonial/avatar3.png';
 import Avatar4 from '/public/assets/testimonial/avatar4.png';
 
-const data = [
+type Data = {
+  id: number
+  title: string
+  description: string
+  avatar: string
+  name: string
+  designation: string
+  review: number
+}
+
+const data: Data[] = [
   {
     id: 1,
     title: 'Modern look & trending design',
     description:
       'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
-    avatar: Avatar1,
+    avatar: Avatar1.src,
     name: 'Denny Hilguston',
     designation: '@denny.hil',
     review: 4,
@@ -24,7 +34,7 @@ const data = [
     title: 'Design Quality & performance',
     description:
       'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
-    avatar: Avatar2,
+    avatar: Avatar2.src,
     name: 'Denny Hilguston',
     designation: '@denny.hil',
     review: 5,
@@ -34,7 +44,7 @@ const data = [
     title: 'Layout and organized layers',
     description:
       'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
-    avatar: Avatar3,
+    avatar: Avatar3.src,
     name: 'Denny Hilguston',
     designation: '@denny.hil',
     review: 5,
@@ -44,7 +54,7 @@ const data = [
     title: 'Modern look & trending design',
     description:
       'Get working experience to work with this amazing team & in future want to work together for bright future projects and also make deposit to freelancer.',
-    avatar: Avatar4,
+    avatar: Avatar4.src,
     name: 'Denny Hilguston',
     designation: '@denny.hil',
     review: 4,
@@ -99,11 +109,43 @@ const carouselParams = {
 
 export default function TestimonialCard () {
   return (
-    <h1>Testimonial Card</h1>
+    <section id='testimonial' sx={{ variant: 'section.testimonial' }}>
+      <Container css={{ textAlign: 'center' }}>
+        <SectionHeader
+          slogan='Testimonial'
+          title='Meet Client Satisfaction'
+        />
+      </Container>
+
+      <Box sx={styles.carouselWrapper}>
+        <Carousel {...carouselParams}>
+          {data.map(({ id, review, title, description, avatar, name, designation }) => (
+            <Box key={id} sx={styles.reviewCard}>
+              <Rating rating={review} />
+              <Heading as='h3' sx={styles.title}>
+                {title}
+              </Heading>
+              <Text sx={styles.description}>{description}</Text>
+              <div className='card-footer'>
+                <div className="image">
+                  <Image src={avatar} alt='client image' />
+                </div>
+                <div className="reviewer-info">
+                  <Heading as='h4' sx={styles.heading}>
+                    {name}
+                  </Heading>
+                  <Text sx={styles.designation}>{designation}</Text>
+                </div>
+              </div>
+            </Box>
+          ))}
+        </Carousel>
+      </Box>
+    </section>
   );
 }
 
-const styles = {
+const styles: any = {
   carouselWrapper: {
     display: 'flex',
     justifyContent: 'flex-end',
