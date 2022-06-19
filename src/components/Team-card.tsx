@@ -10,11 +10,26 @@ interface Props {
 
 export default function TeamCard ({ src, altText, title, designation, social }: Props) {
   return (
-    <h1>TeamCard</h1>
+    <Box sx={styles.card}>
+      <Image src={src} alt={altText} sx={styles.memberThumb} />
+      <Box sx={styles.infoWrapper}>
+        <Heading className='info__name' sx={styles.infoWrapper}>
+          {title}
+        </Heading>
+        <Text className='info__designation' sx={styles.infoWrapper}>
+          {designation}
+        </Text>
+      </Box>
+      <Box sx={styles.socialShare} className='social__share'>
+        {social.map(({ id, path, name, icon }: any) => (
+          <Link key={id} href={path} className={name}>{icon}</Link>
+        ))}
+      </Box>
+    </Box >
   );
 }
 
-const styles = {
+const styles: any = {
   card: {
     display: 'flex',
     alignItems: 'center',

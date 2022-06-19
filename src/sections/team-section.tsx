@@ -10,10 +10,26 @@ import Member4 from '/public/assets/team/member-4.png';
 import Member5 from '/public/assets/team/member-5.png';
 import Member6 from '/public/assets/team/member-6.png';
 
-const data = [
+type SocialProfile = {
+  id: number
+  name: string
+  path: string
+  icon: any
+}
+
+type Data = {
+  id: number
+  imgSrc: string
+  altText: string
+  title: string
+  designation: string
+  socialProfile: SocialProfile[]
+}
+
+const data: Data[] = [
   {
     id: 1,
-    imgSrc: Member1,
+    imgSrc: Member1.src,
     altText: 'Saimon Harmer',
     title: 'Saimon Harmer',
     designation: 'CEO and Founder',
@@ -40,7 +56,7 @@ const data = [
   },
   {
     id: 2,
-    imgSrc: Member2,
+    imgSrc: Member2.src,
     altText: 'Aaron Nunez',
     title: 'Aaron Nunez',
     designation: 'Founder',
@@ -67,7 +83,7 @@ const data = [
   },
   {
     id: 3,
-    imgSrc: Member3,
+    imgSrc: Member3.src,
     altText: 'Aaron Nunez',
     title: 'Aaron Nunez',
     designation: 'Web Designer',
@@ -94,7 +110,7 @@ const data = [
   },
   {
     id: 4,
-    imgSrc: Member4,
+    imgSrc: Member4.src,
     altText: 'Lina Jutila',
     title: 'Lina Jutila',
     designation: 'Web Developer',
@@ -121,7 +137,7 @@ const data = [
   },
   {
     id: 5,
-    imgSrc: Member5,
+    imgSrc: Member5.src,
     altText: 'Saimon Harmer',
     title: 'Saimon Harmer',
     designation: 'CEO and Founder',
@@ -148,7 +164,7 @@ const data = [
   },
   {
     id: 6,
-    imgSrc: Member6,
+    imgSrc: Member6.src,
     altText: 'Aaron Nunez',
     title: 'Aaron Nunez',
     designation: 'Web Designer',
@@ -177,7 +193,26 @@ const data = [
 
 export default function TeamSection () {
   return (
-    <h1>Team Section</h1>
+    <section>
+      <Container>
+        <SectionHeader
+          slogan='our team'
+          title='The most qualified and talented individuals'
+        />
+        <Grid sx={styles.grid}>
+          {data.map(({ id, imgSrc, altText, title, designation, socialProfile }) => (
+            <TeamCard
+              key={id}
+              src={imgSrc}
+              altText={altText}
+              title={title}
+              designation={designation}
+              social={socialProfile}
+            />
+          ))}
+        </Grid>
+      </Container>
+    </section>
   );
 }
 
