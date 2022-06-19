@@ -1,5 +1,4 @@
 import React from 'react';
-import { ThemeUIJSX } from 'theme-ui/core'
 import { FaStar } from 'react-icons/fa';
 
 interface Props {
@@ -7,7 +6,7 @@ interface Props {
 }
 
 const Rating = ({ rating }: Props) => {
-  const totalRating: ThemeUIJSX.Element[] = []
+  const totalRating: any[] = []
 
   for (let i = 0; i < 5; i++) {
     const className = i < rating ? 'star' : 'star-o'

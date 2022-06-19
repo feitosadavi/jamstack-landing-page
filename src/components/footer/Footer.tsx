@@ -2,15 +2,38 @@
 import { Box, Container, Image, Text } from 'theme-ui';
 import { Link } from 'components';
 import data from './footer.data';
-import FooterLogo from '../assets/logo.svg';
+const FooterLogo = '/logo.svg';
 
 export default function Footer () {
   return (
-    <h1>Footer</h1>
+    <footer sx={styles.footer}>
+      <Container>
+        <Box sx={styles.footer.footerBottomArea}>
+          <Link path='/'>
+            <Image src={FooterLogo} alt='Logo' />
+          </Link>
+          <Box sx={styles.footer.menus}>
+            <nav>
+              {data.menuItem.map(({ path, label }, i) => (
+                <Link
+                  key={i}
+                  path={path}
+                  label={label}
+                  sx={styles.footer.link}
+                />
+              ))}
+            </nav>
+          </Box>
+          <Text sx={styles.footer.copyright}>
+            Copyright by {new Date().getFullYear()} Company Name
+          </Text>
+        </Box>
+      </Container>
+    </footer>
   );
 }
 
-const styles = {
+const styles: any = {
   footer: {
     footerBottomArea: {
       borderTop: '1px solid',

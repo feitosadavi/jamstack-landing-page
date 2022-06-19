@@ -6,7 +6,7 @@ interface Props extends LinkProps {
   path: string
   label?: string
   children?: any
-  (...rest: any): any
+  [props: string]: any
 }
 
 export function NavLink ({ path, label, children, ...rest }: Props) {
@@ -17,7 +17,7 @@ export function NavLink ({ path, label, children, ...rest }: Props) {
 
 export function Link ({ path, label, children, ...rest }: Props) {
   return (
-    <A {...rest} href={path}>
+    <A {...rest as any} href={path}>
       {children || label}
     </A>
   );
